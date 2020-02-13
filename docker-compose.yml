@@ -2,12 +2,13 @@ version: '3'
 services:
     web:
         build: .
-#        command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
-        command: bash -c "python manage.py makemigrations && python manage.py migrate && uwsgi --ini uwsgi.ini"
+        command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+#        command: bash -c "python manage.py makemigrations && python manage.py migrate && uwsgi --ini uwsgi.ini"
         ports:
             - "8000:8000"
         depends_on:
           - postgres
+          - redis
         restart: always
 
 
@@ -23,3 +24,11 @@ services:
             - POSTGRES_DB=simple_project
             - POSTGRES_USER=admin
             - POSTGRES_PASSWORD=admin23571113
+    redis:
+        restart: always
+        image: 'bitnami/redis:latest'
+        ports:
+            - '6379:6379'
+        environment:
+            - REDIS_PASSWORD=EfMOUldCN2l6X1ukJw6TghIavadzOApGYXAdlCsU
+

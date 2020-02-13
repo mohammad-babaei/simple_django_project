@@ -1,5 +1,7 @@
+django-debug-toolbar
 Django>=3.0.3
 django-filter>=2.2.0
 djangorestframework>=3.11.0
 psycopg2-binary>=2.8.4
 uWSGI>=2.0.18
+django-cacheops

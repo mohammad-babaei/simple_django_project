@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from club.urls import club_router
 from player.urls import player_router
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,3 +27,10 @@ urlpatterns = [
     url(r'^', include(player_router.urls)),
 
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+
+    urlpatterns = [
+                      path('__debug__/', include(debug_toolbar.urls)),
+                  ] + urlpatterns

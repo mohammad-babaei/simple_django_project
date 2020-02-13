@@ -5,4 +5,4 @@ from .models import Club
 
 class ClubModelViewSet(viewsets.ModelViewSet):
     serializer_class = ClubSerializer
-    queryset = Club.objects.all()
+    queryset = Club.objects.all().cache()
